@@ -29,7 +29,7 @@ export default async function ClassesPage() {
         </div>
 
         <div className="grid grid-cols-1 gap-4">
-          {classes.length > 0 ? classes.map((cls) => (
+          {classes.length > 0 ? classes.map((cls: any) => (
             <div key={cls.id} className="bg-white rounded-[2rem] border p-6 hover:shadow-lg transition-all flex items-center gap-8 group">
               <div className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-2xl bg-slate-50 text-slate-900 font-bold group-hover:bg-emerald-500 group-hover:text-white transition-all transform group-hover:scale-110 duration-500">
                 <span className="text-xs uppercase opacity-60">

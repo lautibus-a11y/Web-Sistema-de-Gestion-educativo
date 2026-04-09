@@ -105,7 +105,7 @@ export default async function DashboardPage() {
             <div className="rounded-xl border bg-white p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-slate-900 mb-4">Próximas Clases</h3>
               <div className="space-y-4">
-                {classesToday.length > 0 ? classesToday.map((cls) => (
+                {classesToday.length > 0 ? classesToday.map((cls: any) => (
                   <div key={cls.id} className="flex items-center gap-3">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 font-bold text-xs text-center p-1">
                       {cls.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -123,7 +123,7 @@ export default async function DashboardPage() {
                 Ver calendario completo
               </Link>
             </div>
-
+ 
             <div className="rounded-xl border bg-white p-6 shadow-sm">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-slate-900">Alumnos Recientes</h3>
@@ -132,7 +132,7 @@ export default async function DashboardPage() {
                 </Link>
               </div>
               <div className="space-y-4">
-                {recentStudents.map((student) => (
+                {recentStudents.map((student: any) => (
                   <div key={student.id} className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-600">
