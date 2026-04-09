@@ -2,11 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  output: 'export',
+  // Removed output: 'export' to let Vercel handle the deployment natively
   images: {
     unoptimized: true,
   },
-  // Ensure we can build without errors
   typescript: {
     ignoreBuildErrors: true,
   },
