@@ -37,9 +37,9 @@ export default async function DashboardPage() {
   return (
     <>
       <Navbar />
-      <div className="space-y-8 p-8 pb-12">
+      <div className="space-y-4 sm:space-y-8 p-4 sm:p-8 pb-12">
         {/* Hero Section */}
-        <div className="relative h-64 w-full overflow-hidden rounded-2xl shadow-lg border">
+        <div className="relative h-40 sm:h-64 w-full overflow-hidden rounded-2xl shadow-lg border">
           <div className="absolute inset-0 bg-slate-900/40 z-10"></div>
           <div className="absolute inset-0 animate-zoom-in">
             <Image 
@@ -50,50 +50,50 @@ export default async function DashboardPage() {
               priority
             />
           </div>
-          <div className="relative z-20 flex h-full flex-col justify-center px-10">
-            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 backdrop-blur-md px-3 py-1 text-xs font-bold text-emerald-100 border border-emerald-500/30 mb-4 w-fit">
+          <div className="relative z-20 flex h-full flex-col justify-center px-5 sm:px-10">
+            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 backdrop-blur-md px-3 py-1 text-xs font-bold text-emerald-100 border border-emerald-500/30 mb-2 sm:mb-4 w-fit">
               <Sparkles size={12} />
               <span>Gestión Administrativa</span>
             </div>
-            <h1 className="text-4xl font-black text-white tracking-tight">
+            <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
               Dashboard <span className="text-emerald-400">Hub</span>
             </h1>
-            <p className="mt-2 max-w-lg text-lg text-slate-100 font-medium">
+            <p className="mt-1 sm:mt-2 max-w-lg text-sm sm:text-lg text-slate-100 font-medium hidden sm:block">
               Panel de control del Instituto Profesional de Inglés.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
           <StatCard 
-            title="Total Alumnos" 
+            title="Alumnos" 
             value={studentCount} 
             icon={Users} 
             trend={{ value: 12, isPositive: true }}
           />
           <StatCard 
-            title="Cursos Activos" 
+            title="Cursos" 
             value={courseCount} 
             icon={BookOpen} 
           />
           <StatCard 
-            title="Ingresos Totales" 
+            title="Ingresos" 
             value={`$${paidPayments._sum.amount?.toLocaleString() || 0}`} 
             icon={DollarSign} 
             trend={{ value: 8, isPositive: true }}
           />
           <StatCard 
-            title="Clases del Día" 
+            title="Clases Hoy" 
             value={classesToday.length} 
             icon={Calendar} 
           />
         </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <div className="lg:col-span-2 rounded-xl border bg-white p-6 shadow-sm">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-slate-900">Crecimiento de Alumnos</h3>
-              <select className="text-sm border-none bg-slate-50 rounded-md px-2 py-1 outline-none text-slate-500">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
+          <div className="lg:col-span-2 rounded-xl border bg-white p-4 sm:p-6 shadow-sm overflow-x-auto">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-sm sm:text-lg font-semibold text-slate-900">Crecimiento de Alumnos</h3>
+              <select className="text-xs sm:text-sm border-none bg-slate-50 rounded-md px-2 py-1 outline-none text-slate-500">
                 <option>Últimos 7 días</option>
                 <option>Últimos 30 días</option>
               </select>
