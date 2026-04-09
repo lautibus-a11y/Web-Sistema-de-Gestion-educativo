@@ -30,7 +30,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex h-screen overflow-hidden bg-slate-50">
           <Sidebar />
-          <div className="flex flex-1 flex-col overflow-hidden relative">
+          {/* Main content — add pt-14 on mobile to clear the fixed top bar */}
+          <div className="flex flex-1 flex-col overflow-hidden relative pt-14 md:pt-0">
             <div className="flex-1 overflow-y-auto overflow-x-hidden">
               {children}
             </div>

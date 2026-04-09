@@ -199,10 +199,10 @@ export default function LandingPage() {
                 <div 
                   key={service.id} 
                   onClick={() => toggleCard(service.id)}
-                  className={`relative overflow-hidden group p-8 sm:p-10 rounded-[2.5rem] border-t-[8px] transition-all duration-700 cursor-pointer ${
+                  className={`relative overflow-hidden group p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] border-t-[6px] sm:border-t-[8px] shadow-md hover:shadow-xl transition-all duration-700 cursor-pointer ${
                     isExpanded 
-                      ? 'bg-slate-900 border-emerald-500 shadow-2xl scale-105 z-10' 
-                      : 'bg-slate-50 border-slate-900 hover:border-slate-900 hover:bg-white hover:-translate-y-2'
+                      ? 'bg-slate-900 border-emerald-500 shadow-2xl sm:scale-105 z-10' 
+                      : 'bg-white border-slate-900 hover:-translate-y-1'
                   }`}
                 >
                   <div className={`h-14 w-14 sm:h-16 sm:w-16 rounded-2xl flex items-center justify-center mb-8 sm:mb-10 transition-all duration-500 ${
@@ -247,44 +247,63 @@ export default function LandingPage() {
       </section>
 
       {/* NEW SECTION: Nuestra Institución & Galería */}
-      <section id="institucion" className="relative z-40 py-24 sm:py-32 px-4 sm:px-10 reveal">
+      <section id="institucion" className="relative z-40 py-16 sm:py-32 px-4 sm:px-10 reveal">
           <div className="container mx-auto">
-             <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
-                <div className="lg:w-1/2">
-                   <p className="text-emerald-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4">Sobre nosotros</p>
-                   <h2 className="text-5xl sm:text-7xl font-black text-white tracking-tighter uppercase italic leading-[0.9] mb-8">
-                     Nuestra <br/> <span className="text-emerald-500">Institución</span>
-                   </h2>
-                   <p className="text-slate-400 text-lg leading-relaxed max-w-xl mb-12">
-                      Con más de 15 años de trayectoria, IPI se ha consolidado como el centro de idiomas líder en excelencia académica. 
-                      Nuestra misión es empoderar a nuestros alumnos con las herramientas necesarias para triunfar en un contexto global.
-                   </p>
-                   <div className="grid grid-cols-2 gap-6">
-                      <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                         <Camera size={24} className="text-emerald-400 mb-4" />
-                         <p className="text-white font-black uppercase text-xs tracking-wider">Instalaciones Modernas</p>
-                      </div>
-                      <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                         <Layers size={24} className="text-emerald-400 mb-4" />
-                         <p className="text-white font-black uppercase text-xs tracking-wider">Soporte Digital</p>
+             {/* Text block */}
+             <div className="mb-10 sm:mb-16">
+                <p className="text-emerald-500 font-black uppercase tracking-[0.3em] text-[10px] mb-3">Sobre nosotros</p>
+                <h2 className="text-4xl sm:text-7xl font-black text-white tracking-tighter uppercase italic leading-[0.9] mb-6">
+                  Nuestra <span className="text-emerald-500">Institución</span>
+                </h2>
+                <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl">
+                   Con más de 15 años de trayectoria, IPI se ha consolidado como el centro de idiomas líder en excelencia académica. 
+                   Nuestra misión es empoderar a nuestros alumnos para triunfar en un contexto global.
+                </p>
+             </div>
+
+             {/* Mobile: horizontal scroll gallery */}
+             <div className="md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+                {galleryImages.map((img, i) => (
+                   <div key={i} className="relative shrink-0 w-[75vw] h-[50vw] rounded-[1.5rem] overflow-hidden snap-start border-2 border-white/10">
+                      <Image 
+                        src={img.src} 
+                        alt={img.alt} 
+                        fill 
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-4">
+                         <span className="text-white text-[10px] font-black uppercase tracking-widest">{img.alt}</span>
                       </div>
                    </div>
-                </div>
-                
-                <div className="lg:w-1/2 grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[150px] sm:auto-rows-[200px]">
-                   {galleryImages.map((img, i) => (
-                      <div key={i} className={`relative group overflow-hidden rounded-[2rem] border-2 border-white/10 hover:border-emerald-500 transition-all duration-700 ${img.span}`}>
-                         <Image 
-                           src={img.src} 
-                           alt={img.alt} 
-                           fill 
-                           className="object-cover group-hover:scale-110 transition-all duration-1000 grayscale group-hover:grayscale-0"
-                         />
-                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                            <span className="text-white text-[10px] font-black uppercase tracking-widest">{img.alt}</span>
-                         </div>
+                ))}
+             </div>
+
+             {/* Desktop: masonry grid */}
+             <div className="hidden md:grid grid-cols-3 gap-4 auto-rows-[200px]">
+                {galleryImages.map((img, i) => (
+                   <div key={i} className={`relative group overflow-hidden rounded-[2rem] border-2 border-white/10 hover:border-emerald-500 transition-all duration-700 ${img.span}`}>
+                      <Image 
+                        src={img.src} 
+                        alt={img.alt} 
+                        fill 
+                        className="object-cover group-hover:scale-110 transition-all duration-1000 grayscale group-hover:grayscale-0"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                         <span className="text-white text-[10px] font-black uppercase tracking-widest">{img.alt}</span>
                       </div>
-                   ))}
+                   </div>
+                ))}
+             </div>
+
+             {/* Feature chips - mobile only */}
+             <div className="grid grid-cols-2 gap-4 mt-8 md:hidden">
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+                   <Camera size={20} className="text-emerald-400 shrink-0" />
+                   <p className="text-white font-black uppercase text-[10px] tracking-wider">Instalaciones Modernas</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+                   <Layers size={20} className="text-emerald-400 shrink-0" />
+                   <p className="text-white font-black uppercase text-[10px] tracking-wider">Soporte Digital</p>
                 </div>
              </div>
           </div>
