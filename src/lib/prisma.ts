@@ -24,9 +24,33 @@ export const prisma = {
   },
   course: {
     findMany: async () => [
-      { id: '1', name: 'Full English - Kids', level: 'Beginner', schedule: 'Lun/Mie 14:00', price: 15000, students: [] },
-      { id: '2', name: 'Advanced Conversation', level: 'C1', schedule: 'Mar/Jue 18:00', price: 20000, students: [] },
-      { id: '3', name: 'Business English', level: 'B2', schedule: 'Sab 09:00', price: 25000, students: [] },
+      { 
+        id: '1', 
+        name: 'Full English - Kids', 
+        level: 'Beginner', 
+        schedule: 'Lun/Mie 14:00', 
+        price: 15000, 
+        description: 'Programa para niños de 6 a 12 años.',
+        _count: { students: 20, classes: 2 } 
+      },
+      { 
+        id: '2', 
+        name: 'Advanced Conversation', 
+        level: 'C1', 
+        schedule: 'Mar/Jue 18:00', 
+        price: 20000, 
+        description: 'Clases dinámicas de conversación avanzada.',
+        _count: { students: 15, classes: 1 } 
+      },
+      { 
+        id: '3', 
+        name: 'Business English', 
+        level: 'B2', 
+        schedule: 'Sab 09:00', 
+        price: 25000, 
+        description: 'Inglés corporativo para el entorno laboral.',
+        _count: { students: 10, classes: 1 } 
+      },
     ],
     count: async () => 12,
   },
